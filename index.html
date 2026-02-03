@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matt Lindar | Literary Fantasy</title>
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Design palette: parchment, ink, gold */
+        :root {
+            --color-parchment: #f4f1e8;
+            --color-ink: #1a1614;
+            --color-gold: #d4af37;
+            --color-deep-blue: #1e2a3a;
+            --color-mist: rgba(212, 175, 55, 0.15);
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Crimson Pro', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-parchment);
+            color: var(--color-ink);
+            line-height: 1.8;
+        }
+
+        /* Atmospheric gradient overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 50%, var(--color-mist) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--color-mist) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-display);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            font-family: var(--font-display);
+            padding: 1rem 2.5rem;
+            border: 2px solid;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-gold);
+            color: var(--color-ink);
+            border-color: var(--color-gold);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-deep-blue);
+            color: var(--color-gold);
+            border-color: var(--color-deep-blue);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-ink);
+            border-color: var(--color-ink);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-ink);
+            color: var(--color-parchment);
+        }
+
+        /* Work section */
+        .work-section {
+            padding: 8rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.03em;
+        }
+
+        .section-meta {
+            text-align: center;
+            color: var(--color-gold);
+            margin-bottom: 3.5rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+
+        .work-card {
+            background: white;
+            padding: 3.5rem;
+            border: 1px solid rgba(0,0,0,0.08);
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .work-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+
+        .work-meta {
+            text-align: center;
+            color: var(--color-gold);
+            margin-bottom: 2.5rem;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .work-description {
+            margin-bottom: 1.75rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #333;
+        }
+
+        .work-themes {
+            font-style: italic;
+            opacity: 0.65;
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            font-size: 0.95rem;
+        }
+
+        /* About section */
+        .about-section {
+            padding: 8rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .about-contact {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .about-contact a {
+            color: var(--color-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: var(--font-display);
+            letter-spacing: 0.05em;
+        }
+
+        .about-contact a:hover {
+            color: var(--color-deep-blue);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-deep-blue);
+            color: var(--color-parchment);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            color: var(--color-gold);
+            text-decoration: none;
+            font-family: var(--font-display);
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--color-parchment);
+        }
+
+        .copyright {
+            opacity: 0.6;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .work-card {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Matt Lindar</h1>
+        <p class="hero-subtitle">Literary Fantasy</p>
+        
+        <p class="hero-tagline">
+            Stories where magic preserves but never without cost, and survival 
+            becomes a question of what remains worth saving.
+        </p>
+
+        <div class="cta-group">
+            <a href="#work" class="btn btn-primary">Current Work</a>
+            <a href="#about" class="btn btn-secondary">About</a>
+        </div>
+    </div>
+</section>
+
+<!-- Current project -->
+<section id="work" class="work-section">
+    <h2 class="section-title">The Roots Remember Fire</h2>
+    <p class="section-meta">103,000 words · Adult Literary Fantasy</p>
+
+    <article class="work-card">
+        <h3 class="work-title">Book One</h3>
+        <p class="work-meta">Complete manuscript seeking representation</p>
+
+        <p class="work-description">
+    Lysandra has spent her life in Lulath, a remote Arborian village where the 
+    elders preach caution and the past is carefully guarded. But when she pushes 
+    her magic too far, she glimpses a memory of fire—and learns her people are 
+    survivors of a genocide the world believes succeeded.
+</p>
+
+        <p class="work-description">
+    Guided by Tim, who remembers the fall, Lysandra journeys beyond the mountains 
+    into cities, politics, and dangers she never imagined. The hunters who destroyed 
+    her civilization generations ago are still searching. And some secrets, once 
+    unearthed, demand a reckoning.
+</p>
+
+        <p class="work-themes">
+            Ecological memory · Cultural survival · Moral complexity · The cost of visibility
+        </p>
+    </article>
+</section>
+
+<!-- Author bio -->
+<section id="about" class="about-section">
+    <h2 class="section-title">About</h2>
+
+    <p class="about-text">
+        Matt Lindar writes literary fantasy exploring the intersection of ecology, 
+        memory, and power—where magic preserves but never without consequence.
+    </p>
+
+    <p class="about-text">
+        Currently seeking representation for <em>The Roots Remember Fire</em>.
+    </p>
+
+    <div class="about-contact">
+        <a href="mailto:author.mattlindar@gmail.com">author.mattlindar@gmail.com</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <nav class="footer-links">
+        <a href="https://www.instagram.com/matt.lindar" class="footer-link" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:author.mattlindar@gmail.com" class="footer-link">Contact</a>
+    </nav>
+    <p class="copyright">© 2026 Matt Lindar</p>
+</footer>
+
+</body>
+</html>
